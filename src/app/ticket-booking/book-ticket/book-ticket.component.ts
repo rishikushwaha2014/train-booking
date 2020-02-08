@@ -54,6 +54,7 @@ export class BookTicketComponent implements OnInit {
     this.error = "";
   }
 
+  // get all available seats
   private getAvailablseats(): TrainSeatInfoModel[] {
     let availablseats: TrainSeatInfoModel[] = [];
     this.bookingInfo.seats.forEach(seat => {
@@ -63,6 +64,9 @@ export class BookTicketComponent implements OnInit {
     });
     return availablseats;
   }
+
+  // category2 is last rows which has 3 seats
+  // category3 is all rows
 
   private checkInCategorys(name: string, count: number): void {
     let category2: TrainSeatInfoModel[] = [];
@@ -78,6 +82,7 @@ export class BookTicketComponent implements OnInit {
     }
   }
 
+  // seat book function
   private bookSeat(bookseats: TrainSeatInfoModel[], name: string): void {
     bookseats.forEach(seat => {
       const index: number = this.bookingInfo.seats.findIndex(
@@ -92,6 +97,7 @@ export class BookTicketComponent implements OnInit {
     this.flag = false;
   }
 
+  // check category and reserve seat
   private checkInCategory(
     count: number,
     category: number
@@ -114,6 +120,7 @@ export class BookTicketComponent implements OnInit {
     }
   }
 
+  // it checks booking seat is in same row or not
   private chekIfSameRow(bookseats: TrainSeatInfoModel[]): TrainSeatInfoModel[] {
     let row: number[] = [];
     bookseats.forEach(seat => {
